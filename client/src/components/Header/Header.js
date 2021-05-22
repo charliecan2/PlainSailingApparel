@@ -10,9 +10,6 @@ function Header() {
             <Link className='logoContainer' to='/'>
                 <Logo className='logo'/>
             </Link>
-            <h1 className='siteTitle'>
-                Plain Sailing Apparel
-            </h1>
             <div className='options'>
                 <Link className='option' to='/shop'>
                     SHOP

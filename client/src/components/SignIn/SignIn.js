@@ -1,4 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import FormInput from '../FormInput/FormInput';
+import CustomButton from '../CustomButton/CustomButton';
+
+import './SignIn.scss';
 
 function SignIn(props) {
     const [credentials, setCredentials] = useState({
@@ -26,27 +30,27 @@ function SignIn(props) {
           <h1>I already have an account</h1>  
           <p>Sign in using your email and password</p>
 
-          <form>
-              <input 
+          <form onSubmit={submitCredentials}>
+            
+            <FormInput 
               name='email' 
               id='email' 
               type='email' 
+              label='email'
               value={credentials.email} 
-              onChange={handleChange}
+              handleChange={handleChange}
               required
-              />
-              <label for='email'>Email</label>
-              <input 
+            />
+            <FormInput 
               name='password' 
               id='password' 
               type='password'
+              label='password'
               value={credentials.password} 
-              onChange={handleChange}
+              handleChange={handleChange}
               required
             />
-              <label for='password'>Password</label>
-
-              <button onSubmit={submitCredentials}>Submit</button>
+            <CustomButton type='submit'>Sign In</CustomButton>
           </form>
         </div>
     )
