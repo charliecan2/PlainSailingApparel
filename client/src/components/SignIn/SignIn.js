@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
 
+import { signInWithGoogle } from '../Firebase/Firebase.utils';
+
 import './SignIn.scss';
 
 function SignIn(props) {
@@ -51,6 +53,7 @@ function SignIn(props) {
               required
             />
             <CustomButton type='submit'>Sign In</CustomButton>
+            <CustomButton className="googleBtn" onClick={signInWithGoogle}>Google Sign In</CustomButton>
           </form>
         </div>
     )

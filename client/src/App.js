@@ -4,6 +4,7 @@ import Homepage from './pages/homepage/Homepage';
 import ShopPage from './pages/Shop/Shop';
 import Header from './components/Header/Header';
 import SignInAndSignUp from './components/SignInAndSignUp/SignInAndSignUp';
+import { auth } from './components/Firebase/Firebase.utils'
 import './App.css';
 
 function App() {
