@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Homepage from './pages/homepage/Homepage';
 import ShopPage from './pages/Shop/Shop';
@@ -8,6 +8,16 @@ import { auth } from './components/Firebase/Firebase.utils'
 import './App.css';
 
 function App() {
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    auth.onAuthStateChanged(user => {
+      setCurrentUser(user);
+
+      console.log(currentUser);
+    })
+  }, [currentUser])
+
   return (
     <Fragment>
       <Header />
