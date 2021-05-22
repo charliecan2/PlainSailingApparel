@@ -1,0 +1,32 @@
+.header {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  margin-bottom: 50px;
+
+  .logoContainer {
+    height: 100%;
+    width: 70px;
+    padding: 25px;
+  }
+
+  .siteTitle {
+    display: flex;
+    justify-content: flex-start;
+    line-height: 80px;
+  }
+
+  .options {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: auto;
+
+    .option {
+      padding: 10px 15px;
+      padding-top: 60px;
+    }
+  }
+}
