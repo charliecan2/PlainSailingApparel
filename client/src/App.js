@@ -7,20 +7,22 @@ import SignInAndSignUp from './components/SignInAndSignUp/SignInAndSignUp';
 import { auth } from './components/Firebase/Firebase.utils'
 import './App.css';
 
-function App() {
+const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     auth.onAuthStateChanged(user => {
       setCurrentUser(user);
+    });
 
-      console.log(currentUser);
-    })
-  }, [currentUser])
+    return() => {
+      setCurrentUser(null);
+    }
+  }, [])
 
   return (
     <Fragment>
-      <Header />
+      <Header currentUser={currentUser} />
       <Switch>
         <Route exact path='/' component={Homepage}/>
         <Route path='/shop' component={ShopPage}/>

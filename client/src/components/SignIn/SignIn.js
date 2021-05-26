@@ -52,8 +52,10 @@ function SignIn(props) {
               handleChange={handleChange}
               required
             />
-            <CustomButton type='submit'>Sign In</CustomButton>
-            <CustomButton className="googleBtn" onClick={signInWithGoogle}>Google Sign In</CustomButton>
+            <div className='buttons'>
+              <CustomButton type='submit'>Sign In</CustomButton>
+              <CustomButton isGoogleSignIn onClick={signInWithGoogle}>Google Sign In</CustomButton>
+            </div>
           </form>
         </div>
     )
