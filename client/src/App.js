@@ -4,21 +4,38 @@ import Homepage from './pages/homepage/Homepage';
 import ShopPage from './pages/Shop/Shop';
 import Header from './components/Header/Header';
 import SignInAndSignUp from './components/SignInAndSignUp/SignInAndSignUp';
-import { auth } from './components/Firebase/Firebase.utils'
+import { auth, createProfileDocument } from './components/Firebase/Firebase.utils'
 import './App.css';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    auth.onAuthStateChanged(user => {
-      setCurrentUser(user);
+    auth.onAuthStateChanged(async userAuth => {
+      createProfileDocument(userAuth);
+      if(userAuth){
+        const userRef = await createProfileDocument(userAuth);
+
+        userRef.onSnapshot(snapShot => {
+          setCurrentUser({
+            id: snapShot.id,
+            ...snapShot.data()
+          });
+        })
+      }
+      else{
+        setCurrentUser(userAuth)
+      }
     });
 
     return() => {
       setCurrentUser(null);
     }
   }, [])
+
+  useEffect(() => {
+    console.log(currentUser);
+  }, [currentUser])
 
   return (
     <Fragment>
