@@ -18,7 +18,7 @@ function SignIn(props) {
         setCredentials({ ...credentials, [name]: value});
     }
 
-    const submitCredentials = event => {
+    const submitCredentials = async event => {
       event.preventDefault();
 
       const { email, password } = credentials;
@@ -60,7 +60,7 @@ function SignIn(props) {
             />
             <div className='buttons'>
               <CustomButton type='submit'>Sign In</CustomButton>
-              <CustomButton isGoogleSignIn onClick={signInWithGoogle}>Google Sign In</CustomButton>
+              <CustomButton type='button' isGoogleSignIn onClick={signInWithGoogle}>Google Sign In</CustomButton>
             </div>
           </form>
         </div>
