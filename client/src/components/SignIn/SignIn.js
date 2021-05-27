@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
 
-import { signInWithGoogle } from '../Firebase/Firebase.utils';
+import { auth ,signInWithGoogle } from '../Firebase/Firebase.utils';
 
 import './SignIn.scss';
 
@@ -19,12 +19,19 @@ function SignIn(props) {
     }
 
     const submitCredentials = event => {
-        event.preventDefault();
+      event.preventDefault();
 
+      const { email, password } = credentials;
+
+      try {
+        await auth.signInWithEmailAndPassword(email, password);
         setCredentials({
-            email: '',
-            password: ''
-        })
+          email: '',
+          password: ''
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     return (
@@ -33,7 +40,6 @@ function SignIn(props) {
           <p>Sign in using your email and password</p>
 
           <form onSubmit={submitCredentials}>
-            
             <FormInput 
               name='email' 
               id='email' 
