@@ -1,12 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import './Header.scss';
 import { auth } from '../Firebase/Firebase.utils';
 
-import { connect } from 'react-redux';
 import { ReactComponent as Logo } from '../../assets/sailboat.svg'
 
-function Header(props) {
+function Header() {
+    const { currentUser } = useSelector(state => state.user)
+
     return (
         <div className='header'>
             <Link className='logoContainer' to='/'>
@@ -20,7 +22,7 @@ function Header(props) {
                     CONTACT
                 </Link>
                 {
-                    props.currentUser ?
+                    currentUser ?
                     <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div> :
                     <Link className='option' to='/signin'>SIGN IN</Link>
                 }
@@ -29,8 +31,4 @@ function Header(props) {
     )
 }
 
-const mapStateToProps = state => ({
-    currentUser: state.user.currentUser
-})
-
-export default connect(mapStateToProps)(Header);
+export default Header;
