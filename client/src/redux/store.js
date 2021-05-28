@@ -1,5 +1,8 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-import userSlice from './user/userSlice'
+import userSlice from './user/userSlice';
+import { logger } from 'redux-logger';
+
+const middleware = [logger]
 
 export default configureStore({
     reducer: {
@@ -9,5 +12,5 @@ export default configureStore({
         serializableCheck: {
             ignoredActions: ['user/setCurrentUser']
         }
-    })
+    }).concat(...middleware), 
 })
