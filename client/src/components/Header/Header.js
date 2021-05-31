@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import './Header.scss';
 import { auth } from '../Firebase/Firebase.utils';
+import CartIcon from '../CartIcon/CartIcon';
 
 import { ReactComponent as Logo } from '../../assets/sailboat.svg'
 
@@ -26,6 +27,7 @@ function Header() {
                     <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div> :
                     <Link className='option' to='/signin'>SIGN IN</Link>
                 }
+                <CartIcon />
             </div>
         </div>
     )
