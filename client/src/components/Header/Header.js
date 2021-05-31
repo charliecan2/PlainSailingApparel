@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom'
 import './Header.scss';
 import { auth } from '../Firebase/Firebase.utils';
 import CartIcon from '../CartIcon/CartIcon';
+import CartDropdown from '../CartDropdown/CartDropdown';
 
 import { ReactComponent as Logo } from '../../assets/sailboat.svg'
 
 function Header() {
-    const { currentUser } = useSelector(state => state.user)
+    const { currentUser } = useSelector(state => state.user);
+    const { isHidden } = useSelector(state => state.hidden);
 
     return (
         <div className='header'>
@@ -29,6 +31,10 @@ function Header() {
                 }
                 <CartIcon />
             </div>
+            { 
+                isHidden ? <div /> :
+                <CartDropdown />
+            }
         </div>
     )
 }
