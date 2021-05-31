@@ -10,7 +10,7 @@ import { ReactComponent as Logo } from '../../assets/sailboat.svg'
 
 function Header() {
     const { currentUser } = useSelector(state => state.user);
-    const { isHidden } = useSelector(state => state.hidden);
+    const { hidden } = useSelector(state => state.cart);
 
     return (
         <div className='header'>
@@ -32,7 +32,7 @@ function Header() {
                 <CartIcon />
             </div>
             { 
-                isHidden ? <div /> :
+                hidden ? <div /> :
                 <CartDropdown />
             }
         </div>
