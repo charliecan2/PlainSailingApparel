@@ -7,7 +7,7 @@ import { addCartItem } from '../../redux/cart/cartSlice';
 function CollectionItem({ item }) {
     const dispatch = useDispatch();
 
-    const { name, price, imageUrl} = item;
+    const { name, price, imageUrl } = item;
 
     return (
         <div className='collectionItem'>
