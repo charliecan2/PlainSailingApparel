@@ -1,20 +1,32 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
+import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
 import userSlice from './user/userSlice';
-import hiddenSlice from './hidden/hiddenSlice';
 import cartSlice from './cart/cartSlice';
 import { logger } from 'redux-logger';
+import storage from 'redux-persist/lib/storage'
 
 const middleware = [logger]
 
-export default configureStore({
-    reducer: {
-        user: userSlice,
-        hidden: hiddenSlice,
-        cart: cartSlice
-    },
+const reducers = combineReducers({
+    user: userSlice,
+    cart: cartSlice
+})
+
+const persistConfig = {
+    key: 'root',
+    storage,
+    whiteList: ['cart']
+}
+
+const persistedRecuer = persistReducer(persistConfig, reducers)
+
+const store = configureStore({
+    reducer: persistedRecuer,
     middleware: getDefaultMiddleware({
         serializableCheck: {
             ignoredActions: ['user/setCurrentUser', 'cart/addCartItem', 'cart/setHidden', 'cart/clearItemFromCart']
         }
     }).concat(...middleware), 
 })
+
+export default store
