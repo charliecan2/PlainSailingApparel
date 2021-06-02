@@ -5,6 +5,7 @@ import Homepage from './pages/homepage/Homepage';
 import ShopPage from './pages/Shop/Shop';
 import Header from './components/Header/Header';
 import SignInAndSignUp from './components/SignInAndSignUp/SignInAndSignUp';
+import Checkout from './components/Checkout/Checkout'
 import { auth, createProfileDocument } from './components/Firebase/Firebase.utils'
 import './App.css';
 import { setCurrentUser } from './redux/user/userSlice';
@@ -42,7 +43,8 @@ const App = () => {
       <Switch>
         <Route exact path='/' component={Homepage}/>
         <Route path='/shop' component={ShopPage}/>
-        <Route path='/signin' component={SignInAndSignUp}/>
+        <Route exact path='/checkout' component={Checkout} />
+        <Route exact path='/signin' component={SignInAndSignUp}/>
       </Switch>
     </Fragment>
   );
