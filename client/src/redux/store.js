@@ -14,7 +14,7 @@ export default configureStore({
     },
     middleware: getDefaultMiddleware({
         serializableCheck: {
-            ignoredActions: ['user/setCurrentUser', 'cart/addCartItem', 'cart/setHidden']
+            ignoredActions: ['user/setCurrentUser', 'cart/addCartItem', 'cart/setHidden', 'cart/clearItemFromCart']
         }
     }).concat(...middleware), 
 })

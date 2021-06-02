@@ -28,11 +28,12 @@ function Checkout() {
                     <span>Remove</span>
                 </div>
             </div>
-            {
+            {   cartItems.length ?
                 cartItems.map(cartItem => (
-                    <CheckoutItem cartItem={cartItem} />
+                    <CheckoutItem key={cartItem.id} cartItem={cartItem} />
                 )
-                )
+                ) :
+                <div className='noItems'>No Items to Display</ div>
             }
             <div className='total'>
                 <span>Total: ${cartTotal}</span>
