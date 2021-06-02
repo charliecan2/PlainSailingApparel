@@ -6,11 +6,13 @@ import { auth } from '../Firebase/Firebase.utils';
 import CartIcon from '../CartIcon/CartIcon';
 import CartDropdown from '../CartDropdown/CartDropdown';
 
-import { ReactComponent as Logo } from '../../assets/sailboat.svg'
+import { ReactComponent as Logo } from '../../assets/sailboat.svg';
+import { selectCurrentUser } from '../../redux/user/user.selectors'
+import { selectHidden } from '../../redux/cart/cart.selectors';
 
 function Header() {
-    const { currentUser } = useSelector(state => state.user);
-    const { hidden } = useSelector(state => state.cart);
+    const currentUser = useSelector(selectCurrentUser);
+    const hidden = useSelector(selectHidden);
 
     return (
         <div className='header'>

@@ -1,10 +1,15 @@
-import { createSelector } from 'reselect';
+import { createSelector } from '@reduxjs/toolkit';
 
 const selectCart = state => state.cart;
 
 export const selectCartItems = createSelector(
     [selectCart],
     cart => cart.cartItems
+)
+
+export const selectHidden = createSelector(
+    [selectCart],
+    cart => cart.hidden
 )
 
 export const selectCartItemsCount = createSelector(
