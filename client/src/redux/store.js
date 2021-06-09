@@ -3,6 +3,7 @@ import { persistReducer } from 'redux-persist';
 import userSlice from './user/userSlice';
 import cartSlice from './cart/cartSlice';
 import directorySlice from './directory/directorySlice';
+import shopSlice from './shop/shopSlice';
 import { logger } from 'redux-logger';
 import storage from 'redux-persist/lib/storage'
 
@@ -11,7 +12,8 @@ const middleware = [logger]
 const reducers = combineReducers({
     user: userSlice,
     cart: cartSlice,
-    directory: directorySlice
+    directory: directorySlice,
+    shop: shopSlice
 })
 
 const persistConfig = {
