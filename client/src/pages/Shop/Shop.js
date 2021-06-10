@@ -1,20 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux'
+import { Route } from 'react-router-dom'
+import CollectionsOverview from '../../components/CollectionsOverview/CollectionsOverview'
+import CollectionPage from '../collection/Collection';
 
-import CollectionPreview from '../../components/CollectionPreview/CollectionPreview';
-import { selectCollections } from '../../redux/shop/shop.selectors';
-
-function Shop() {
-    
-    const shopData = useSelector(selectCollections);
-
+function Shop({match}) {
+    console.log(match)
     return (
         <div className="shopPage">
-            {
-                shopData.map(({id, ...otherCollectionProps })=> {
-                    return <CollectionPreview key={id} {...otherCollectionProps}/>
-                })
-            }
+            <Route exact path={`${match.path}`} component={CollectionsOverview} />
+            <Route path={`${match.path}/:collectionId`} component={CollectionPage} />
         </div>
     )
 }
