@@ -7,7 +7,11 @@ import shopSlice from './shop/shopSlice';
 import { logger } from 'redux-logger';
 import storage from 'redux-persist/lib/storage'
 
-const middleware = [logger]
+const middleware = []
+
+if (process.env.NODE_ENV === 'development'){
+    middleware.push(logger)
+}
 
 const reducers = combineReducers({
     user: userSlice,
