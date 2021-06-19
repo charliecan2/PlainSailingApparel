@@ -1,7 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import CustomButton from '../CustomButton/CustomButton';
-import './CartDropdown.scss';
+import {
+    CartDropdownContainer,
+    CartItems,
+    EmptyMessage,
+    CheckoutLink,
+    CheckoutButton
+} from './CartDropdown.styles'
 import { useSelector } from 'react-redux'
 
 import CartItem from '../CartItem/CartItem';
@@ -13,21 +17,21 @@ function CartDropdown() {
 
     const dispatch = useDispatch()
     return (
-        <div className='cartDropdown'>
-            <div className='cartItems'>
+        <CartDropdownContainer>
+            <CartItems>
                 {
                     cartItems.length ? 
                     cartItems.map(item => {
                         return <CartItem key={item.id} item={item}/>
                     }) :
-                    <span className='emptyMessage'>Your cart is empty</span>
+                    <EmptyMessage>Your cart is empty</EmptyMessage>
                 }
-            </div>
-            <Link to='/checkout'>
-                <CustomButton onClick={() => dispatch(setHidden())}>GO TO CHECKOUT</CustomButton>
-            </Link>
+            </CartItems>
+            <CheckoutLink to='/checkout'>
+                <CheckoutButton onClick={() => dispatch(setHidden())}>GO TO CHECKOUT</CheckoutButton>
+            </CheckoutLink>
             
-        </div>
+        </CartDropdownContainer>
     )
 }
 
