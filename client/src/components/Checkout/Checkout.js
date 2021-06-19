@@ -1,6 +1,14 @@
 import React from 'react';
 import CheckoutItem from '../CheckoutItem/CheckoutItem';
 import StripeButton from '../StripeButton/StripeButton';
+import { 
+    CheckoutPage,
+    CheckoutHeader,
+    HeaderBlock,
+    NoItemsPreview,
+    TotalPreview,
+    TestWarning
+} from './Checkout.styles'
 import './Checkout.scss';
 
 import { useSelector } from 'react-redux';
@@ -11,41 +19,41 @@ function Checkout() {
     const cartTotal = useSelector(selectCartTotal);
 
     return (
-        <div className='checkoutPage'>
-            <div className='checkoutHeader'>
-                <div className='headerBlock'>
+        <CheckoutPage>
+            <CheckoutHeader>
+                <HeaderBlock>
                     <span>Product</span>
-                </div>
-                <div className='headerBlock'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>Description</span>
-                </div>
-                <div className='headerBlock'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>Quantity</span>
-                </div>
-                <div className='headerBlock'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>Price</span>
-                </div>
-                <div className='headerBlock'>
+                </HeaderBlock>
+                <HeaderBlock>
                     <span>Remove</span>
-                </div>
-            </div>
+                </HeaderBlock>
+            </CheckoutHeader>
             {   cartItems.length ?
                 cartItems.map(cartItem => (
                     <CheckoutItem key={cartItem.id} cartItem={cartItem} />
                 )
                 ) :
-                <div className='noItems'>No Items to Display</ div>
+                <NoItemsPreview>No Items to Display</NoItemsPreview>
             }
-            <div className='total'>
+            <TotalPreview>
                 <span>Total: ${cartTotal}</span>
-            </div>
-            <div className='testWarning'>
+            </TotalPreview>
+            <TestWarning>
                 *Please use the following test credit card for payment*
                 <br />
                 4242 4242 4242 4242 - Exp: Any future date - CVC: Any 3 digits
-            </div>
+            </TestWarning>
             <StripeButton price={cartTotal} />
-        </div>
+        </CheckoutPage>
     )
 }
 

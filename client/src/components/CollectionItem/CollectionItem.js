@@ -17,7 +17,7 @@ function CollectionItem({ item }) {
                 <span className='name'>{name}</span>
                 <span className='price'>${price}</span>
             </div>
-            <CustomButton onClick={() => dispatch(addCartItem(item))} inverted>Add to Cart</CustomButton>
+            <CustomButton className="customButton" onClick={() => dispatch(addCartItem(item))} inverted>Add to Cart</CustomButton>
         </div>
     )
 }
