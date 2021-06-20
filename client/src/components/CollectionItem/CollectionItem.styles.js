@@ -26,7 +26,6 @@ export const ImageContainer = styled.div`
     height: 95%;
     background-size: cover;
     background-position: center;
-    margin-bottom: 5px;
     background-image: ${({ imageUrl })  => `url(${imageUrl})`}
 `;
 
@@ -44,11 +43,11 @@ export const CollectionFooter = styled.div`
     display: flex;
     justify-content: space-between;
     font-size: 18px;
+    margin-bottom: 15px;
 `;
 
 export const NameContainer = styled.span`
     width: 90%;
-    margin-bottom: 15px;
 `
 
 export const PriceContainer = styled.span`

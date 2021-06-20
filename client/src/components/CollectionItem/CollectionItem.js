@@ -22,7 +22,7 @@ function CollectionItem({ item }) {
                 <NameContainer>{name}</NameContainer>
                 <PriceContainer>${price}</PriceContainer>
             </CollectionFooter>
-            <CustomButtonContainer className="customButton" onClick={() => dispatch(addCartItem(item))} inverted>Add to Cart</CustomButtonContainer>
+            <CustomButtonContainer onClick={() => dispatch(addCartItem(item))} inverted>Add to Cart</CustomButtonContainer>
         </CollectionItemContainer>
     )
 }
