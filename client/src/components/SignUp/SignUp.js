@@ -3,7 +3,7 @@ import { auth, createProfileDocument } from '../Firebase/Firebase.utils';
 import FormInput from '../FormInput/FormInput';
 import CustomButton from '../CustomButton/CustomButton';
 
-import './SignUp.scss';
+import { SignUpContainer, TitleContainer } from './SignUp.styles'
 
 function SignUp() {
     const [signUpData, setSignUpData] = useState({
@@ -51,8 +51,8 @@ function SignUp() {
     }
     
     return (
-        <div className='signUp'>
-            <h2 className='title'>I do not have an account</h2>
+        <SignUpContainer>
+            <TitleContainer>I do not have an account</TitleContainer>
             <span>Sign up with your email with password</span>
             <form className='signUpForm' onSubmit={handleSubmit}>
                 <FormInput
@@ -89,7 +89,7 @@ function SignUp() {
                 />
                 <CustomButton type='submit'>SIGN UP</CustomButton>
             </form>
-        </div>
+        </SignUpContainer>
     )
 }
 

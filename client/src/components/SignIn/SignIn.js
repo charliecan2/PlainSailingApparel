@@ -6,7 +6,7 @@ import CustomButton from '../CustomButton/CustomButton';
 
 import { auth ,signInWithGoogle } from '../Firebase/Firebase.utils';
 
-import './SignIn.scss';
+import { SignInContainer, ButtonsContainer } from './SignIn.styles'
 
 function SignIn() {
 
@@ -44,7 +44,7 @@ function SignIn() {
   }
 
   return (
-      <div className='signIn'>
+      <SignInContainer>
         <h1>I already have an account</h1>  
         <p>Sign in using your email and password</p>
 
@@ -67,12 +67,12 @@ function SignIn() {
             handleChange={handleChange}
             required
           />
-          <div className='buttons'>
+          <ButtonsContainer>
             <CustomButton type='submit'>Sign In</CustomButton>
             <CustomButton type='button' isGoogleSignIn onClick={signInWithGoogle}>Google Sign In</CustomButton>
-          </div>
+          </ButtonsContainer>
         </form>
-      </div>
+      </SignInContainer>
   )
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import './Directory.scss';
+import { DirectoryMenu } from './Directory.styles'
 import MenuItem from '../MenuItem/MenuItem';
 import { selectDirectorySections } from '../../redux/directory/directory.selectors';
 
@@ -9,7 +9,7 @@ function Directory() {
   const sections = useSelector(selectDirectorySections);
 
   return (
-    <div className="directoryMenu">
+    <DirectoryMenu>
         {sections.map(section => 
         <MenuItem
         key={section.id}
@@ -18,7 +18,7 @@ function Directory() {
         size={section.size}
         linkUrl={section.linkUrl}
         />)}
-    </div>
+    </DirectoryMenu>
   )
 }
 
