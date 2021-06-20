@@ -9,7 +9,7 @@ import {
     TotalPreview,
     TestWarning
 } from './Checkout.styles'
-import './Checkout.scss';
+
 
 import { useSelector } from 'react-redux';
 import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selectors';

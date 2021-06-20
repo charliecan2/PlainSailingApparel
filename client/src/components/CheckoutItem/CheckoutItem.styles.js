@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const CheckoutItemContainer = styled.div`
     width: 100%;
@@ -13,9 +13,32 @@ export const CheckoutItemContainer = styled.div`
 export const ImageContainer = styled.div`
     width: 23%;
     padding-right: 15px;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
 `
 
 export const RemoveButton = styled.div`
-    margin-right: 35px;
+    margin-right: 70px;
     cursor: pointer;
 `
+
+export const TextContainer = styled.span`
+    width: 30%;
+
+    ${props => props.quantity && 
+    css`
+    display: flex;
+
+    span {
+        margin: 0 10px;
+    }
+    
+    div {
+        cursor: pointer;
+    }
+    `
+    }
+`;
