@@ -22,3 +22,9 @@ export const selectCollection = memoize((collectionUrlParam) =>
         collections => collections.find(collection => collection.id === COLLECTION_ID_MAP[collectionUrlParam])
     )
 )
+
+export const selectCollectionsForPreview = createSelector(
+    [selectCollections],
+    (collections) =>
+      collections ? Object.keys(collections).map((key) => collections[key]) : []
+  );
